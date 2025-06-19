@@ -1,4 +1,4 @@
- from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify
 import pandas as pd, seaborn as sns, matplotlib.pyplot as plt
 import io, base64
 
