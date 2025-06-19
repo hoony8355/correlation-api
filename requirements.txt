@@ -1,4 +1,5 @@
 flask
-pandas
+flask-cors
 matplotlib
+pandas
 seaborn
