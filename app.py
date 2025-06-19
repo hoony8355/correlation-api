@@ -11,13 +11,15 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# ✅ 1. NotoSansKR.ttf 파일 경로 수동 지정 (static 폴더에 넣는다고 가정)
-FONT_PATH = "NotoSansKR-Regular.ttf"
+# ✅ 1. 폰트 경로 안정적으로 설정 (static 폴더 기준)
+FONT_PATH = os.path.join(os.path.dirname(__file__), "static", "NotoSansKR-Regular.ttf")
 
-# ✅ 2. 폰트 등록
+# ✅ 2. 폰트 등록 (존재 확인 및 에러 방지)
 if os.path.exists(FONT_PATH):
     font_manager.fontManager.addfont(FONT_PATH)
-    plt.rcParams['font.family'] = font_manager.FontProperties(fname=FONT_PATH).get_name()
+    font_name = font_manager.FontProperties(fname=FONT_PATH).get_name()
+    plt.rcParams['font.family'] = font_name
+    print(f"✅ 폰트 '{font_name}' 적용 완료")
 else:
     print("⚠️ 한글 폰트 파일을 찾을 수 없습니다. 기본 폰트로 진행합니다.")
 
@@ -37,6 +39,7 @@ def analyze():
 
         plt.figure(figsize=(10, 8))
         sns.heatmap(corr, annot=True, fmt=".2f", cmap="coolwarm", square=True)
+
         buf = io.BytesIO()
         plt.savefig(buf, format="png", bbox_inches='tight')
         buf.seek(0)
