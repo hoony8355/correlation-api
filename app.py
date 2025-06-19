@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app)
 
 # ✅ 1. NotoSansKR.ttf 파일 경로 수동 지정 (static 폴더에 넣는다고 가정)
-FONT_PATH = "NotoSansKR-Regular.otf"
+FONT_PATH = "NotoSansKR-Regular.ttf"
 
 # ✅ 2. 폰트 등록
 if os.path.exists(FONT_PATH):
