@@ -33,5 +33,6 @@ def analyze():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+# ✅ 이 줄 반드시 포함!
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
