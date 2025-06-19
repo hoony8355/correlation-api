@@ -1,10 +1,13 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify 
 from flask_cors import CORS
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import io
 import base64
+
+# ✅ 한글 폰트 명시적으로 지정
+plt.rcParams['font.family'] = 'Noto Sans CJK KR'
 
 app = Flask(__name__)
 CORS(app)  # ✅ 모든 출처 허용 (필요 시 origins 제한 가능)
