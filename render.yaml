@@ -2,6 +2,6 @@ services:
   - type: web
     name: correlation-api
     env: python
-    buildCommand: ""
+    buildCommand: bash build.sh
     startCommand: python app.py
     plan: free
